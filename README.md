@@ -159,14 +159,15 @@ InsightForge-MCP/
 ├─ .gitignore
 ├─ CLAUDE.md             # guidance for Claude Code working in this repo
 ├─ README.md
-└─ backend/
-   ├─ pyproject.toml
-   ├─ requirements.txt
+├─ requirements.txt      # Python dependencies
+├─ pyproject.toml        # packaging / tooling config
+└─ backend/              # all Python code lives here
    ├─ exports/           # generated CSVs + charts
    ├─ scripts/
    │  ├─ schema.sql      # the sample e-commerce schema
    │  ├─ init_db.py      # create the tables
-   │  └─ seed_data.py    # load ~500 customers / 1000 products / 10k orders
+   │  ├─ seed_data.py    # load ~500 customers / 1000 products / 10k orders
+   │  └─ check_db.py     # verify connectivity / whether the DB exists
    ├─ src/insightforge_mcp/
    │  ├─ config.py       # typed settings from .env
    │  ├─ database.py     # psycopg3 pool + read-only transactions
@@ -201,8 +202,8 @@ cp .env.example .env
 
 ### 3. Install dependencies (conda)
 This project uses a **conda environment named `mcp`** on Python 3.11.9.
+Run from the **project root** (where `requirements.txt` lives):
 ```bash
-cd backend
 conda create -y -n mcp python=3.11.9
 conda activate mcp
 pip install -r requirements.txt
@@ -211,6 +212,7 @@ pip install -r requirements.txt
 
 ### 4. Create the schema and load sample data
 ```bash
+cd backend
 python scripts/init_db.py
 python scripts/seed_data.py
 ```

@@ -1,3 +1,8 @@
+# InsightForge MCP — Python dependencies
+# Install into the conda env "mcp" (Python 3.11.9):
+#     conda activate mcp
+#     pip install -r requirements.txt
+
 # Core MCP server framework (FastMCP lives inside the `mcp` package)
 mcp>=1.4.0
 
@@ -10,3 +15,6 @@ pydantic-settings>=2.2
 # Reporting helpers: tabular handling + chart rendering
 pandas>=2.2
 matplotlib>=3.8
+
+# Testing
+pytest>=8.0

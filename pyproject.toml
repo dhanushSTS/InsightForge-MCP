@@ -2,7 +2,7 @@
 name = "insightforge-mcp"
 version = "0.1.0"
 description = "An MCP server that turns a PostgreSQL database into an AI Business Analyst."
-readme = "../README.md"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "mcp>=1.4.0",
@@ -20,7 +20,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["backend/src"]
 
 [tool.ruff]
 line-length = 100
