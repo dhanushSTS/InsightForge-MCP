@@ -51,7 +51,11 @@ def read_connection() -> Iterator[psycopg.Connection]:
     with pool.connection() as conn:
         with conn.cursor() as cur:
             cur.execute("SET TRANSACTION READ ONLY")
-            cur.execute("SET statement_timeout = %s", (settings.query_timeout_ms,))
+            # Postgres SET does not accept bound parameters; inject a validated
+            # integer literal (int() cast makes this injection-safe). SET LOCAL
+            # scopes the timeout to this transaction so it can't leak to the
+            # next pooled user of the connection.
+            cur.execute(f"SET LOCAL statement_timeout = {int(settings.query_timeout_ms)}")
         try:
             yield conn
         finally:
