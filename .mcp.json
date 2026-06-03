@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "insightforge": {
+      "command": "C:\\Users\\Shamlatech\\miniconda3\\envs\\mcp\\python.exe",
+      "args": ["-m", "insightforge_mcp.server"],
+      "cwd": "E:\\MCP\\InsightForge-MCP\\backend"
+    }
+  }
+}
