@@ -1,0 +1,12 @@
+# Core MCP server framework (FastMCP lives inside the `mcp` package)
+mcp>=1.4.0
+
+# PostgreSQL driver (psycopg 3) with bundled binaries + connection pooling
+psycopg[binary,pool]>=3.1
+
+# Typed settings loaded from the project .env
+pydantic-settings>=2.2
+
+# Reporting helpers: tabular handling + chart rendering
+pandas>=2.2
+matplotlib>=3.8
